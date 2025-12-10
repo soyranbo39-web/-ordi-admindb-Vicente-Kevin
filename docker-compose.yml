@@ -13,3 +13,12 @@ services:
     volumes:
       - ./mysql_data:/var/lib/mysql
       - ./Scrips/01_Permisos.sql:/docker-entrypoint-initdb.d/01_Permisos.sql
+    secrets:
+      - mysql_root_password
+      - mysql_user_password
+
+secrets:
+  mysql_root_password:
+    file: ./Secrets/mysql_root_password.txt
+  mysql_user_password:
+    file: ./Secrets/mysql_user_password.txt
