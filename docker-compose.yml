@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_logistore
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: logistore
+      MYSQL_USER: logistore_user
+      MYSQL_PASSWORD: userpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./Scrips/01_Permisos.sql:/docker-entrypoint-initdb.d/01_Permisos.sql
